@@ -5,14 +5,12 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { TestComponent } from './test/test.component';
 import { Test2RoutsComponent } from './test2-routs/test2-routs.component';
 import { EditComponent } from './edit/edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TestComponent,
     EditComponent,
     Test2RoutsComponent
   ],

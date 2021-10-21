@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { productList } from 'src/products';
 import { faTimes, faPlus, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-edit',
@@ -15,15 +16,16 @@ export class EditComponent implements OnInit {
   productList: Product[] = productList
   showNewFitFields = false
 
-  product: Product = null;
-  index: number = -1;
+  product: Product;
+  index: number = 100;
 
   constructor(private route: ActivatedRoute) {
     this.route.paramMap.subscribe(p => {
-      console.log(p.get('index'))
+      // console.log(p.get('index'))
       this.index = (p.get('index') as any);
       this.product = productList[this.index]
     });
+    this.product = productList[this.index] //
   }
 
   ngOnInit(): void {
@@ -50,15 +52,27 @@ export class EditComponent implements OnInit {
     this.showNewFitFields = false
   }
 
+  saveNewFitDetails(el: HTMLTableCellElement, j: number, fitE: HTMLInputElement, mktE: HTMLInputElement) {
+    el.style.display = "none"
+    this.productList[this.index].fits[j].fit = fitE.value
+    this.productList[this.index].fits[j].mkt = mktE.value
+  }
+
+  log(a: any) {
+    console.log(a)
+  }
+
+  changeValue(el: HTMLTableRowElement) {
+    console.log(el.cells[3].style.display = 'block')
+  }
+
 }
 
 
-interface productx {
+interface Product {
   product: string,
   fits: {
     fit: string,
     mkt: string
   }[]
 }
-
-type Product = productx | null
