@@ -1,0 +1,16 @@
+<ul class="list-group">
+    <li *ngFor="let product of products; index as i" class="list-group-item">
+
+        <a class="productName" [routerLink]="['/edit', i]">
+            {{product.product}}
+        </a>
+
+        <table>
+            <tr *ngFor="let fit of product.fits">
+                <td>{{fit.fit}}</td>
+                <td>{{fit.mkt}}</td>
+            </tr>
+        </table>
+
+    </li>
+</ul>

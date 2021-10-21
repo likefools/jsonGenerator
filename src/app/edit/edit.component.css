@@ -1,0 +1,57 @@
+.container {
+    /* background-color: gray; */
+    direction: rtl;
+    text-align: right;
+    max-width: 95%;
+    padding: 20px;
+    border: 1px solid #ddd;
+}
+
+#goBack {
+    margin: 0 auto;
+    display: block;
+}
+
+table {
+    margin: 20px;
+}
+
+.buttons {
+    display: flex;
+}
+
+#delete {
+    background-color: red;
+}
+
+#deleteFit {
+    color: red;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#addFit {
+    /* line-height: 50px; */
+    color: green;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#saveFit {
+    color: green;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+table {
+    max-width: 95%;
+}
+
+td {
+    /* width: fit-content; */
+    /* max-width: 30%; */
+}
+
+input {
+    width: 100%;
+}

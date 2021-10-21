@@ -1,0 +1,42 @@
+<div class="container">
+    <li class="list-group-item" contenteditable="true">
+
+        {{product?.product}}
+    </li>
+
+    <table>
+        <tr *ngFor="let fit of product?.fits;index as j">
+            <td>
+                <fa-icon id="deleteFit" [icon]="iconDelete" (click)="deleteFit(j)"></fa-icon>
+            </td>
+            <td #fite>
+                <input class="form-control" type="text" value="{{fit?.fit}}">
+            </td>
+            <td #mkt>
+                <input class="form-control" type="text" value="{{fit?.mkt}}">
+            </td>
+        </tr>
+
+        <tr *ngIf="showNewFitFields">
+            <td>
+                <fa-icon id="deleteFit" [icon]="iconDelete" (click)="showNewFitFields = false"></fa-icon>
+            </td>
+            <td><input class="form-control" type="text" placeholder="fit" #newFit></td>
+            <td><input class="form-control" type="text" placeholder="mkt" #newMkt></td>
+            <td>
+                <fa-icon id="saveFit" [icon]="iconSave" (click)="saveNewFit(newFit, newMkt)"></fa-icon>
+            </td>
+
+        </tr>
+        <tr>
+            <fa-icon id="addFit" [icon]="iconAdd" (click)="showNewFitFields = true"></fa-icon>
+        </tr>
+    </table>
+    <!-- <p>{{product | json}}</p> -->
+
+    <div class="buttons">
+        <button id="goBack" class="btn btn-primary" routerLink="/">go back</button>
+        <button id="delete" class="btn" (click)="deleteProdcut()" routerLink="/">delete product</button>
+    </div>
+
+</div>

@@ -3,11 +3,11 @@ import { Component } from '@angular/core';
 import { faEdit } from '@fortawesome/free-regular-svg-icons';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-test',
+  templateUrl: './test.component.html',
+  styleUrls: ['./test.component.css']
 })
-export class AppComponent {
+export class TestComponent {
   productList = productList
   iconEdit = faEdit
 

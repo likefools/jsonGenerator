@@ -1,0 +1,36 @@
+<div id="container">
+    <!-- <ul > -->
+    <!-- <p contenteditable="">hello</p> -->
+    <span *ngFor="let product of productList;index as i">
+      <li class="list-group-item">
+  
+        <fa-icon [icon]="iconEdit"></fa-icon>
+        <span class="fix" (keyup)="editProdcut(i, productE)" #productE>{{product.product}} </span>
+        <input type="text" name="" id="" #productE value={{product.product}}>
+  
+        <!-- <button class="btn btn-primary buttonAdd">add fits</button> -->
+      </li>
+  
+      <ul>
+        <div class="fits">
+          <table>
+            <tr *ngFor="let fit of product.fits;index as j">
+              <td contenteditable (keyup)="editFit(i, j, 'fit', fite)" #fite>{{fit.fit}}</td>
+              <td contenteditable (keyup)="editFit(i, j, 'mkt', mkt)" #mkt>{{fit.mkt}}</td>
+            </tr>
+          </table>
+        </div>
+      </ul>
+  
+    </span>
+  
+    <div id="add">
+      <button class="btn btn-primary ">add product</button>
+      <button class="btn btn-primary ">add product</button>
+    </div>
+  
+    <!-- </ul> -->
+    <span>
+      {{productList | json}}
+    </span>
+  </div>
