@@ -1,51 +1,7 @@
-#container {
-    display: inline-block;
-    direction: rtl;
-    max-width: 90%;
-    margin: 20px auto;
-    /* background-color: aqua; */
-    padding: 10px 5px;
-}
-
-li {
-    text-align: right;
-    /* font-weight: bold; */
-    /* max-width: 95%; */
-    /* margin: 5px auto; */
-    /* min-height: 40px; */
-    /* direction: rtl; */
-    /* display: grid; */
-    /* grid-template-columns: auto max-content; */
-}
-
-.fits {
-    padding: 10px;
-}
-
-td {
-    text-align: right;
-    font-weight: normal;
-    min-width: 100px;
-}
-
-fa-icon:hover {
-    cursor: pointer;
-}
-
-fa-icon {
-    margin: 20px;
-    margin-right: 5px;
-}
-
-.buttonAdd {
-    width: 100px;
-}
-
-
-*#editable {
-    display: inline-block;
-}
-
-span#editable {
-    display: inline-block;
+.container {
+    max-width: 95%;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    max-width: 700px;
 }

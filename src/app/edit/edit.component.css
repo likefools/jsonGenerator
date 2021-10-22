@@ -1,68 +1,34 @@
-.container {
-    /* background-color: gray; */
-    direction: rtl;
-    text-align: right;
-    max-width: 95%;
-    padding: 20px;
-    border: 1px solid #ddd;
-    max-width: 700px;
+.horizentalFlex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-#goBack {
-    margin: 0 auto;
-    display: block;
+fa-icon {
+    font-size: 20px;
+    cursor: pointer;
+    margin: 10px;
 }
 
 table {
     margin: 20px;
-}
-
-.buttons {
-    display: flex;
-}
-
-#delete {
-    background-color: red;
-}
-
-#deleteFit {
-    color: red;
-    font-size: 20px;
-    cursor: pointer;
-}
-
-#addFit {
-    /* line-height: 50px; */
-    color: green;
-    font-size: 20px;
-    cursor: pointer;
-}
-
-#saveFit {
-    color: green;
-    font-size: 20px;
-    cursor: pointer;
-}
-
-table {
     max-width: 95%;
 }
 
-td {
-    /* width: fit-content; */
-    /* max-width: 30%; */
+.iconDelete {
+    color: red;
+}
+
+#addFit {
+    color: green;
 }
 
 input {
     width: 100%;
 }
 
-.aaa {
-    background: green;
-    padding: 100px;
-}
-
-
-.iconSave{
+.iconSave {
     display: none;
+    color: green;
 }
+

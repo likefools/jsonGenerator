@@ -1,0 +1,20 @@
+<button id="btnCreateNewProdcut" class="btn btn-primary" [routerLink]="['/new']">
+    create new product
+</button>
+
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let product of products; index as i">
+
+        <a [routerLink]="['/edit', i]">
+            <h5>{{product.product}}</h5>
+        </a>
+
+        <table>
+            <tr *ngFor="let fit of product.fits">
+                <td>{{fit.fit}}</td>
+                <td>{{fit.mkt}}</td>
+            </tr>
+        </table>
+
+    </li>
+</ul>

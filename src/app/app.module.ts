@@ -5,22 +5,25 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { Test2RoutsComponent } from './test2-routs/test2-routs.component';
+import { mainListRout } from './main-List/main-List.Rout';
 import { EditComponent } from './edit/edit.component';
+// import { NewProductComponent } from './new-product/new-product.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EditComponent,
-    Test2RoutsComponent
+    mainListRout,
+    // NewProductComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
     RouterModule.forRoot([
-      { path: '', component: Test2RoutsComponent },
+      { path: '', component: mainListRout },
       { path: 'edit/:index', component: EditComponent },
+      // { path: 'new', component: NewProductComponent },
       // { path: 'edit', component: EditComponent },
     ])
   ],

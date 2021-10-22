@@ -2,14 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { productList } from 'src/products';
 import { faTimes, faPlus, faCheck } from '@fortawesome/free-solid-svg-icons';
-import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.css']
 })
-export class EditComponent implements OnInit {
+export class EditComponent {
   iconDelete = faTimes
   iconAdd = faPlus
   iconSave = faCheck
@@ -17,57 +16,54 @@ export class EditComponent implements OnInit {
   showNewFitFields = false
 
   product: Product;
-  index: number = 100;
+  index: number = -1;
 
   constructor(private route: ActivatedRoute) {
     this.route.paramMap.subscribe(p => {
-      // console.log(p.get('index'))
       this.index = (p.get('index') as any);
       this.product = productList[this.index]
     });
     this.product = productList[this.index] //
   }
 
-  ngOnInit(): void {
+  updateProduct(el: HTMLInputElement, saveIcon: HTMLDivElement) {
+    if (!el.value) return el.style.border = "1px solid red"
+    this.productList[this.index].product = el.value
+    return saveIcon.style.display = "none"
   }
 
-  deleteFit(index: number) {
-    this.productList[this.index]?.fits.splice(index, 1)
+  updateFit(newDetails: HTMLInputElement[], icon: HTMLTableCellElement, j: number) {
+    const fit = newDetails[0].value;
+    const mkt = newDetails[1].value;
+
+    if (!fit) return newDetails[0].style.border = "1px solid red"
+    if (!mkt) return newDetails[1].style.border = "1px solid red"
+
+    Object.assign(this.productList[this.index].fits[j], { fit, mkt })
+    return icon.style.display = "none"
+  }
+
+  createFit(row: HTMLInputElement[]) {
+    if (!row[0].value) return row[0].style.border = "1px solid red"
+    if (!row[1].value) return row[1].style.border = "1px solid red"
+    this.productList[this.index]?.fits.push({ fit: row[0].value, mkt: row[1].value })
+    row[0].value = ""
+    row[1].value = ""
+    return this.showNewFitFields = false
   }
 
   deleteProdcut() {
     this.productList.splice(this.index, 1)
   }
 
-  editProduct(el: HTMLInputElement) {
-    console.log(el.value)
+  deleteFit(index: number) {
+    this.productList[this.index]?.fits.splice(index, 1)
   }
 
-  saveNewFit(newFit: HTMLInputElement, newMkt: HTMLInputElement) {
-    if (!newFit.value || !newMkt.value) return
-    this.productList[this.index]?.fits.push({ fit: newFit.value, mkt: newMkt.value })
-    newFit.value = ""
-    newMkt.value = ""
-
-    this.showNewFitFields = false
+  showSaveIcon(el: HTMLElement) {
+    el.style.display = 'block'
   }
-
-  saveNewFitDetails(el: HTMLTableCellElement, j: number, fitE: HTMLInputElement, mktE: HTMLInputElement) {
-    el.style.display = "none"
-    this.productList[this.index].fits[j].fit = fitE.value
-    this.productList[this.index].fits[j].mkt = mktE.value
-  }
-
-  log(a: any) {
-    console.log(a)
-  }
-
-  changeValue(el: HTMLTableRowElement) {
-    console.log(el.cells[3].style.display = 'block')
-  }
-
 }
-
 
 interface Product {
   product: string,

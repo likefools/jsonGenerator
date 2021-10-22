@@ -1,0 +1,13 @@
+tr {
+    padding: 5px;
+    border: 1px solid #ddd;
+}
+
+td {
+    min-width: 100px;
+}
+
+#btnCreateNewProdcut {
+    margin: 10px auto;
+    display: block;
+}

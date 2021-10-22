@@ -1,49 +1,48 @@
-<div class="container">
-    <li class="list-group-item" contenteditable="true">
-        {{product?.product}}
-    </li>
-
-    <table>
-        <tr #tr *ngFor="let fit of product?.fits;index as j">
-            <td>
-                <fa-icon id="deleteFit" [icon]="iconDelete" (click)="deleteFit(j)"></fa-icon>
-            </td>
-            <td>
-                <input #fitE class="form-control" type="text" value="{{fit?.fit}}" (keydown)="changeValue(tr)">
-            </td>
-            <td>
-                <input #mktE class="form-control" type="text" value="{{fit?.mkt}}" (keydown)="changeValue(tr)">
-            </td>
-            <td class="iconSave" #iconSaveNew>
-                <fa-icon id="saveFit" [icon]="iconSave" (click)="saveNewFitDetails(iconSaveNew, j, fitE, mktE)">
-                </fa-icon>
-            </td>
-        </tr>
-
-        <tr *ngIf="showNewFitFields">
-            <td>
-                <fa-icon id="deleteFit" [icon]="iconDelete" (click)="showNewFitFields = false"></fa-icon>
-            </td>
-            <td>
-                <input class="form-control" type="text" placeholder="fit" #newFit>
-            </td>
-            <td>
-                <input class="form-control" type="text" placeholder="mkt" #newMkt>
-            </td>
-            <td>
-                <fa-icon id="saveFit" [icon]="iconSave" (click)="saveNewFit(newFit, newMkt)"></fa-icon>
-            </td>
-
-        </tr>
-        <tr>
-            <fa-icon id="addFit" [icon]="iconAdd" (click)="showNewFitFields = true"></fa-icon>
-        </tr>
-    </table>
-    <!-- <p>{{product | json}}</p> -->
-
-    <div class="buttons">
-        <button id="goBack" class="btn btn-primary" routerLink="/">go back</button>
-        <button id="delete" class="btn" (click)="deleteProdcut()" routerLink="/">delete product</button>
+<div class="horizentalFlex">
+    <div #saveIcon class="iconSave">
+        <fa-icon [icon]="iconSave" (click)="updateProduct(productName, saveIcon)"></fa-icon>
     </div>
+    <input #productName class="form-control" (keydown)="showSaveIcon(saveIcon)" value={{product?.product}}>
+</div>
 
+<table>
+    <tr #row *ngFor="let fit of product?.fits;index as index">
+        <td class="iconDelete">
+            <fa-icon [icon]="iconDelete" (click)="deleteFit(index)"></fa-icon>
+        </td>
+        <td>
+            <input #fitInput class="form-control" value={{fit?.fit}} (keydown)="showSaveIcon(saveIcon)">
+        </td>
+        <td>
+            <input #mktInput class="form-control" value={{fit?.mkt}} (keydown)="showSaveIcon(saveIcon)">
+        </td>
+        <td #saveIcon class="iconSave">
+            <fa-icon [icon]="iconSave" (click)="updateFit([fitInput, mktInput], saveIcon, index)">
+            </fa-icon>
+        </td>
+    </tr>
+
+    <tr #row *ngIf="showNewFitFields">
+        <td class="iconDelete">
+            <fa-icon [icon]="iconDelete" (click)="showNewFitFields=false"></fa-icon>
+        </td>
+        <td (keydown)="showSaveIcon(saveIcon)">
+            <input #newFit class="form-control" placeholder="fit">
+        </td>
+        <td (keydown)="showSaveIcon(saveIcon)">
+            <input #newMkt class="form-control" placeholder="mkt">
+        </td>
+        <td #saveIcon class="iconSave">
+            <fa-icon [icon]="iconSave" (click)="createFit([newFit, newMkt])"></fa-icon>
+        </td>
+
+    </tr>
+    <tr>
+        <fa-icon id="addFit" [icon]="iconAdd" (click)="showNewFitFields = true"></fa-icon>
+    </tr>
+</table>
+
+<div class="horizentalFlex">
+    <button class="btn btn-primary" routerLink="/">go back</button>
+    <button class="btn btn-danger" routerLink="/" (click)="deleteProdcut()">delete product</button>
 </div>

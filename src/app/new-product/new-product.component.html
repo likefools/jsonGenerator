@@ -1,0 +1,49 @@
+<div class="container">
+    <li class="list-group-item" contenteditable="true" aria-placeholder="hello">
+        <!-- <input type="text" placeholder="new product name"> -->
+        new product name
+    </li>
+
+    <table>
+        <tr>
+            <td>
+                <fa-icon id="deleteFit" [icon]="iconDelete"></fa-icon>
+            </td>
+            <td>
+                <input class="form-control" type="text">
+            </td>
+            <td>
+                <input class=" form-control" type="text">
+            </td>
+            <td>
+                <fa-icon [icon]="iconSave"></fa-icon>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <!-- <fa-icon id="deleteFit" [icon]="iconDelete" (click)="showNewFitFields = false"></fa-icon> -->
+            </td>
+            <td>
+                <!-- <input class="form-control" type="text" placeholder="fit" #newFit> -->
+            </td>
+            <td>
+                <!-- <input class="form-control" type="text" placeholder="mkt" #newMkt> -->
+            </td>
+            <td>
+                <!-- <fa-icon id="saveFit" [icon]="iconSave" (click)="saveNewFit(newFit, newMkt)"></fa-icon> -->
+            </td>
+
+        </tr>
+        <tr>
+            <!-- <fa-icon id="addFit" [icon]="iconAdd" (click)="showNewFitFields = true"></fa-icon> -->
+        </tr>
+    </table>
+    <!-- <p>{{product | json}}</p> -->
+
+    <!-- <div class="buttons">
+        <button id="goBack" class="btn btn-primary" routerLink="/">go back</button>
+        <button id="delete" class="btn" (click)="deleteProdcut()" routerLink="/">delete product</button>
+    </div> -->
+
+</div>
