@@ -5,7 +5,8 @@
         <td>{{index +1}}</td>
         <td><input class="form-control" [(ngModel)]="fit.fit" #inputFit></td>
         <td><input class="form-control" [(ngModel)]="fit.mkt" #inputMkt></td>
-        <td>
+
+        <td *ngIf="product.fits.length>1">
             <button class="btn btn-sm" (click)="deleteFit(index)">
                 <fa-icon class="iconDelete" [icon]="iconDelete"></fa-icon>
             </button>
@@ -23,8 +24,8 @@
         <td><input #newMkt class="form-control" placeholder="mkt"></td>
 
         <td>
-            <button class="btn btn-sm">
-                <fa-icon class="iconDelete" [icon]="iconDelete" (click)="showNewFitFields=false"></fa-icon>
+            <button class="btn btn-sm" (click)="showNewFitFields=false">
+                <fa-icon class="iconDelete" [icon]="iconDelete"></fa-icon>
             </button>
         </td>
 

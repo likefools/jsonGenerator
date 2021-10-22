@@ -1,7 +1,7 @@
 <input #firstName class="form-control" [(ngModel)]="newProduct.product" placeholder="product name">
 <!-- <p>{{newProduct | json}}</p> -->
 <table>
-    <tr id="rowof" *ngFor="let fit of newProduct?.fits ;index as index">
+    <tr *ngFor="let fit of newProduct?.fits ;index as index">
         <td>{{index+1}}</td>
         <td><input #fitInput class="form-control" [(ngModel)]="fit.fit"></td>
         <td><input #mktInput class="form-control" [(ngModel)]="fit.mkt"></td>
