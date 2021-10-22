@@ -11,3 +11,12 @@ td {
     margin: 10px auto;
     display: block;
 }
+
+.list-group-item {
+    border: none;
+}
+
+#floatLeft {
+    display: flex;
+    justify-content: left;
+}

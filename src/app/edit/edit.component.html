@@ -1,48 +1,49 @@
-<div class="horizentalFlex">
-    <div #saveIcon class="iconSave">
-        <fa-icon [icon]="iconSave" (click)="updateProduct(productName, saveIcon)"></fa-icon>
-    </div>
-    <input #productName class="form-control" (keydown)="showSaveIcon(saveIcon)" value={{product?.product}}>
-</div>
+<input #productName class="form-control" [(ngModel)]="product.product">
 
 <table>
-    <tr #row *ngFor="let fit of product?.fits;index as index">
-        <td class="iconDelete">
-            <fa-icon [icon]="iconDelete" (click)="deleteFit(index)"></fa-icon>
-        </td>
+    <tr *ngFor="let fit of product?.fits; index as index">
+        <td>{{index +1}}</td>
+        <td><input class="form-control" [(ngModel)]="fit.fit" #inputFit></td>
+        <td><input class="form-control" [(ngModel)]="fit.mkt" #inputMkt></td>
         <td>
-            <input #fitInput class="form-control" value={{fit?.fit}} (keydown)="showSaveIcon(saveIcon)">
-        </td>
-        <td>
-            <input #mktInput class="form-control" value={{fit?.mkt}} (keydown)="showSaveIcon(saveIcon)">
-        </td>
-        <td #saveIcon class="iconSave">
-            <fa-icon [icon]="iconSave" (click)="updateFit([fitInput, mktInput], saveIcon, index)">
-            </fa-icon>
+            <button class="btn btn-sm" (click)="deleteFit(index)">
+                <fa-icon class="iconDelete" [icon]="iconDelete"></fa-icon>
+            </button>
         </td>
     </tr>
 
-    <tr #row *ngIf="showNewFitFields">
-        <td class="iconDelete">
-            <fa-icon [icon]="iconDelete" (click)="showNewFitFields=false"></fa-icon>
-        </td>
-        <td (keydown)="showSaveIcon(saveIcon)">
-            <input #newFit class="form-control" placeholder="fit">
-        </td>
-        <td (keydown)="showSaveIcon(saveIcon)">
-            <input #newMkt class="form-control" placeholder="mkt">
-        </td>
+    <!-- new fit component -->
+    <tr *ngIf="showNewFitFields">
+
         <td #saveIcon class="iconSave">
             <fa-icon [icon]="iconSave" (click)="createFit([newFit, newMkt])"></fa-icon>
         </td>
 
+        <td><input #newFit class="form-control" placeholder="fit"></td>
+        <td><input #newMkt class="form-control" placeholder="mkt"></td>
+
+        <td>
+            <button class="btn btn-sm">
+                <fa-icon class="iconDelete" [icon]="iconDelete" (click)="showNewFitFields=false"></fa-icon>
+            </button>
+        </td>
+
     </tr>
+
     <tr>
-        <fa-icon id="addFit" [icon]="iconAdd" (click)="showNewFitFields = true"></fa-icon>
+        <td>
+            <fa-icon id="addFit" [icon]="iconAdd" (click)="showNewFitFields = true"></fa-icon>
+        </td>
     </tr>
 </table>
 
 <div class="horizentalFlex">
-    <button class="btn btn-primary" routerLink="/">go back</button>
-    <button class="btn btn-danger" routerLink="/" (click)="deleteProdcut()">delete product</button>
+    <button class="btn btn-danger btn-sm" routerLink="/" (click)="deleteProdcut()">
+        delete product
+        <fa-icon [icon]="iconDelete"></fa-icon>
+    </button>
+    <button class="btn btn-primary btn-sm" routerLink="/">
+        go back
+        <fa-icon [icon]="iconBack"></fa-icon>
+    </button>
 </div>
