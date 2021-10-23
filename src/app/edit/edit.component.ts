@@ -18,26 +18,24 @@ export class EditComponent {
   showNewFitFields = false
 
   product: Product;
-  index: number = -1;
+  index: any;
 
   constructor(private route: ActivatedRoute) {
-    this.route.paramMap.subscribe(p => {
-      this.index = (p.get('index') as any);
+    this.route.paramMap.subscribe(params => {
+      this.index = params.get('index');
       this.product = productList[this.index]
     });
-    this.product = productList[this.index] //
   }
 
   createFit(row: HTMLInputElement[]) {
-    const fit = row[0].value
-    const mkt = row[1].value
-    if (!fit) return row[0].style.border = "1px solid red"
-    if (!mkt) return row[1].style.border = "1px solid red"
+    row.forEach(cell => {
+      (!cell.value) ? cell.classList.add('error') : cell.classList.remove('error')
+    })
+    if (!row[0].value || !row[1].value) return
 
-    this.productList[this.index]?.fits.push({ fit: fit, mkt: mkt })
-    row[0].value = ""
-    row[1].value = ""
-    return this.showNewFitFields = false
+    this.productList[this.index]?.fits.push({ fit: row[0].value, mkt: row[1].value })
+    row[0].value = row[1].value = ""
+    this.showNewFitFields = false
   }
 
   deleteProdcut() {

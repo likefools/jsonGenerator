@@ -20,19 +20,13 @@ export class NewProductComponent {
   newProduct: Product = { product: "", fits: [] };
 
   createFit(row: HTMLInputElement[]) {
-    const fit = row[0].value
-    const mkt = row[1].value
-    if (!fit) return row[0].classList.add('error');
-    if (!mkt) {
-      row[0].classList.remove('error')
-      row[1].classList.add('error')
-      return
-    }
+    row.forEach(cell => {
+      (!cell.value) ? cell.classList.add('error') : cell.classList.remove('error');
+    })
+    if (!row[0].value || !row[1].value) return;
 
-    this.newProduct.fits.push({ fit: fit, mkt: mkt })
-
-    row[0].value = ""
-    row[1].value = ""
+    this.newProduct.fits.push({ fit: row[0].value, mkt: row[1].value })
+    row[0].value = row[1].value = ""
     this.showNewFitFields = false
   }
 
