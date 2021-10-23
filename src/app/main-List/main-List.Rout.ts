@@ -18,6 +18,4 @@ export class mainListRout {
     this.clip.copy(JSON.stringify(productList))
     this.clip.destroy()
   }
-
-
 }

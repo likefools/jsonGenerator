@@ -7,31 +7,30 @@
         <td><input #mktInput class="form-control" [(ngModel)]="fit.mkt"></td>
 
         <td *ngIf="newProduct.fits.length>1">
-            <button class="btn btn-sm" (click)="deleteFit(index)">
-                <fa-icon class="iconDelete" [icon]="iconDelete"></fa-icon>
-            </button>
+            <!-- <button class="btn btn-sm" (click)="deleteFit(index)"> -->
+            <fa-icon class="clrRed" [icon]="iconDelete" (click)="deleteFit(index)"></fa-icon>
+            <!-- </button> -->
         </td>
     </tr>
 
     <!-- create new fit row -->
     <tr [class.hide]="!showNewFitFields">
-        <td #saveIcon class="iconSave">
-            <fa-icon class="iconSave" [icon]="iconSave" (click)="createFit([newFit, newMkt])"></fa-icon>
+        <td #saveIcon>
+            <fa-icon class="clrGreen" [icon]="iconSave" (click)="createFit([newFit, newMkt])"></fa-icon>
         </td>
 
         <td><input #newFit class="form-control" placeholder="fit"></td>
         <td><input #newMkt class="form-control" placeholder="mkt"></td>
 
-        <td *ngIf="newProduct.fits.length">
-            <button class="btn btn-sm" (click)="showNewFitFields=false">
-                <fa-icon class="iconDelete" [icon]="iconDelete"></fa-icon>
-            </button>
+        <td>
+            <fa-icon *ngIf="newProduct.fits.length" class="clrRed" [icon]="iconDelete" (click)="showNewFitFields=false">
+            </fa-icon>
         </td>
     </tr>
 
     <tr>
         <td>
-            <fa-icon id="addFit" [icon]="iconAdd" (click)="showNewFitFields=true"></fa-icon>
+            <fa-icon class="clrGreen" [icon]="iconAdd" (click)="showNewFitFields=true"></fa-icon>
         </td>
     </tr>
 

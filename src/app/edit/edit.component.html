@@ -6,17 +6,16 @@
         <td><input class="form-control" [(ngModel)]="fit.fit" #inputFit></td>
         <td><input class="form-control" [(ngModel)]="fit.mkt" #inputMkt></td>
 
-        <td *ngIf="product.fits.length>1">
-            <button class="btn btn-sm" (click)="deleteFit(index)">
-                <fa-icon class="iconDelete" [icon]="iconDelete"></fa-icon>
-            </button>
+        <td>
+            <fa-icon *ngIf="product.fits.length>1" class="clrRed" [icon]="iconDelete" (click)="deleteFit(index)">
+            </fa-icon>
         </td>
     </tr>
 
     <!-- new fit component -->
     <tr *ngIf="showNewFitFields">
 
-        <td #saveIcon class="iconSave">
+        <td #saveIcon class="clrGreen">
             <fa-icon [icon]="iconSave" (click)="createFit([newFit, newMkt])"></fa-icon>
         </td>
 
@@ -24,16 +23,14 @@
         <td><input #newMkt class="form-control" placeholder="mkt"></td>
 
         <td>
-            <button class="btn btn-sm" (click)="showNewFitFields=false">
-                <fa-icon class="iconDelete" [icon]="iconDelete"></fa-icon>
-            </button>
+            <fa-icon class="clrRed" [icon]="iconDelete" (click)="showNewFitFields=false"></fa-icon>
         </td>
 
     </tr>
 
     <tr>
         <td>
-            <fa-icon id="addFit" [icon]="iconAdd" (click)="showNewFitFields = true"></fa-icon>
+            <fa-icon class="clrGreen" [icon]="iconAdd" (click)="showNewFitFields = true"></fa-icon>
         </td>
     </tr>
 </table>

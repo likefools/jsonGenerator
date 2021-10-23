@@ -1,26 +1,5 @@
-table {
-    margin: 20px;
-    max-width: 95%;
-}
-
-.iconDelete {
-    color: red;
-}
-
-.iconSave {
-    color: green;
-}
-
-#addFit {
-    color: green;
-}
-
 .error {
     border: 1px solid red;
-}
-
-td:first-child {
-    text-align: center;
 }
 
 .hide {
