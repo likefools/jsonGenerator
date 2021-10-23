@@ -5,3 +5,40 @@
     max-width: 700px;
     margin: auto
 }
+
+fa-icon {
+    font-size: 20px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.clrRed {
+    color: red;
+}
+
+.clrGreen {
+    color: green;
+}
+
+.horizentalFlex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+table {
+    margin: 20px 0;
+}
+
+td:first-child, td:last-child {
+    text-align: center;
+    max-width: 35px;
+}
+
+td:nth-child(2), td:nth-child(3) {
+    width: 50%
+}
+
+.error {
+    border: 1px solid red;
+}
